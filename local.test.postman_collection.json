@@ -1,0 +1,90 @@
+{
+	"info": {
+		"_postman_id": "41b37673-bc8b-4b6f-9f88-76d3e27b3ebf",
+		"name": "local test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Add task",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "\n{\n  \"description\": \"yes no\",\n  \"taskDate\": \"2012-10-22\",\n  \"status\": true\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/tasks/task"
+			},
+			"response": []
+		},
+		{
+			"name": "Update tasks",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"description\": \"this is a new task for test\",\n    \"taskDate\": \"2021-11-11\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/tasks/"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete tasks",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"description\": \"this is a new task for test\",\n    \"taskDate\": \"2021-11-11\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/tasks/"
+			},
+			"response": []
+		},
+		{
+			"name": "All active task",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://192.168.1.234:8080/tasks"
+			},
+			"response": []
+		}
+	]
+}
