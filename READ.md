@@ -17,6 +17,13 @@ CREATE TABLE `oracle`.`task` (
  
  5) Use postman to the test function, see the file in repository local.test.postman_collection.json
  
+## Application Functions
+
+1) Display all active tasks when application is loaded
+2) Add task
+3) Delete the selected tasks in batch
+4) Close the selected tasks in batch
+ 
 ## API Specification
 
 1)Get all active tasks while task status is active
