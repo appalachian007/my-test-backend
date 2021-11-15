@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: application
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+       app.kubernetes.io/name: application
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: application
+    spec:      
+      containers:
+        - name: application
+          image: mytest:mytest
+          imagePullPolicy: Always          
+          ports:
+            - containerPort: 8080
+            - containerPort: 8081
+          volumeMounts:
+            - name: config-volume
+              mountPath: /home/config
+          livenessProbe:
+            httpGet:
+              path: /healthcheck
+              port: 8081
+            initialDelaySeconds: 10
+            timeoutSeconds: 1
+          readinessProbe:
+            httpGet:
+              path: /healthcheck
+              port: 8081
+            initialDelaySeconds: 10
+            timeoutSeconds: 1
+      volumes:
+        - name: config-volume
+          configMap:
+            name: application-config
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: application
+spec:
+  type: LoadBalancer
+  ports:
+    - port: 8080
+      targetPort: 8080
+  selector:
+    app: application
